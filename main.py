@@ -1,4 +1,5 @@
 from flask import Flask
+import os
 
 from blueprints.movies import movies
 from model.movies import Movies
@@ -16,4 +17,4 @@ def hello_world():
 app.register_blueprint(movies, url_prefix='/movies')
 
 if __name__ == '__main__':
-    app.run()
+    app.run(port=os.getenv('PORT', None))
