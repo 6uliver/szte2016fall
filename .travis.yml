@@ -9,4 +9,6 @@ deploy:
   api_key:
     secure: $HEROKU_KEY
   app: $HEROKU_APP_NAME
-  on: production
+  on:
+    branch: production
+    condition: $TRAVIS_PYTHON_VERSION = 2.7
