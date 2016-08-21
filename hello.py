@@ -7,9 +7,11 @@ app = Flask(__name__)
 
 app.movies = Movies()
 
+
 @app.route('/')
 def hello_world():
     return 'Hello, World!'
+
 
 app.register_blueprint(movies, url_prefix='/movies')
 

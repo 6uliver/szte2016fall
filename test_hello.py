@@ -1,9 +1,9 @@
-import hello
 import unittest
+
+import hello
 
 
 class HelloTest(unittest.TestCase):
-
     def setUp(self):
         hello.app.config['TESTING'] = True
         self.app = hello.app.test_client()
