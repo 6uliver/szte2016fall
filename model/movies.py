@@ -12,6 +12,7 @@ class Movies():
 
     def create_movie(self, data):
         nextId = self._get_next_id()
+        data = data.copy()
         data['id'] = nextId
         self.movies[nextId] = data
         return self.movies[nextId]

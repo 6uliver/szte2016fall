@@ -26,16 +26,16 @@ class MoviesModelTest(unittest.TestCase):
         assert_that(result).contains_key('id')
 
     def test_create_movie_different_ids(self):
-        self.model.create_movie(self.aMovieData)
-        self.model.create_movie(self.otherMovieData)
+        a_movie = self.model.create_movie(self.aMovieData)
+        other_movie = self.model.create_movie(self.otherMovieData)
 
-        assert_that(self.aMovieData['id']).is_not_equal_to(self.otherMovieData['id'])
+        assert_that(a_movie['id']).is_not_equal_to(other_movie['id'])
 
-    def test_create_movie_alters_data(self):
+    def test_create_movie_does_not_alter_data(self):
         moviedata = {}
         self.model.create_movie(moviedata)
 
-        assert_that(moviedata).contains_key('id')
+        assert_that(moviedata).does_not_contain_key('id')
 
 
 if __name__ == '__main__':
