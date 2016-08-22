@@ -25,7 +25,7 @@ class MoviesModelTest(unittest.TestCase):
     def test_create_movie_alters_data(self):
         moviedata = {}
         self.model.create_movie(moviedata)
-        self.assertIn('id', moviedata)
+        assert 'id' in moviedata
 
 
 if __name__ == '__main__':
