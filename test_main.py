@@ -1,5 +1,6 @@
-from flask import json
 import unittest
+
+from flask import json
 
 import main
 
@@ -21,6 +22,16 @@ class MainTest(unittest.TestCase):
     def test_get_movie_nonexisting(self):
         response = self.app.get('/movies/1')
         assert response.status_code == 404
+
+    def test_get_movie_existing(self):
+        self.app.post('/movies/'
+                      , data=json.dumps(self.a_movie_data)
+                      , content_type='application/json')
+        response = self.app.get('/movies/1')
+        json_data = json.loads(response.data)
+
+        assert response.status_code == 200
+        assert json_data['title'] == "Interstellar"
 
     def test_create_new_movie(self):
         response = self.app.post('/movies/'
