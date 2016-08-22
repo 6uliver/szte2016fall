@@ -1,12 +1,12 @@
 import unittest
 
-import hello
+import main
 
 
-class HelloTest(unittest.TestCase):
+class MainTest(unittest.TestCase):
     def setUp(self):
-        hello.app.config['TESTING'] = True
-        self.app = hello.app.test_client()
+        main.app.config['TESTING'] = True
+        self.app = main.app.test_client()
 
     def tearDown(self):
         pass
