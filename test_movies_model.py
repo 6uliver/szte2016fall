@@ -1,3 +1,5 @@
+from assertpy import assert_that
+
 from model.movies import Movies
 
 import unittest
@@ -15,6 +17,11 @@ class MoviesModelTest(unittest.TestCase):
     def test_get_movie_nonexisting(self):
         result = self.model.get_movie(1)
         self.assertFalse(result)
+
+    def test_get_movie_existing(self):
+        self.model.create_movie(self.aMovieData)
+        result = self.model.get_movie(1)
+        assert_that(result).contains_key('id')
 
     def test_create_movie_different_ids(self):
         self.model.create_movie(self.aMovieData)
