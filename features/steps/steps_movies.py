@@ -1,4 +1,5 @@
 from behave import given, when, then
+from assertpy import assert_that
 
 import main
 
@@ -32,4 +33,4 @@ def step_impl(context, movie_id):
 
 @then(u'I receive a {code:d} status code response')
 def step_impl(context, code):
-    assert context.response.status_code == code
+    assert_that(context.response.status_code).is_equal_to(code)
