@@ -9,7 +9,7 @@ install: "pip install -r requirements.txt"
 # the test running command
 script: py.test
 # run acceptance tests after deploy
-after_deploy: acceptance_test.sh https://$HEROKU_APP_NAME
+after_deploy: ./acceptance_test.sh https://$HEROKU_APP_NAME
 # here is some Heroku configuration
 deploy:
   provider: heroku
