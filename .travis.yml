@@ -15,8 +15,6 @@ deploy:
   # never use local variables for the secure keys
     secure: $HEROKU_KEY # Heroku env variable
   app: $HEROKU_APP_NAME
-  # run acceptance tests after deploy
-  run: ./acceptance_test.sh https://$HEROKU_APP_NAME.herokuapp.com
   on:
     branch: production
     condition: $TRAVIS_PYTHON_VERSION = 2.7
