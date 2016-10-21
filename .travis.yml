@@ -8,8 +8,6 @@ python:
 install: "pip install -r requirements.txt"
 # the test running command
 script: py.test
-# run acceptance tests after deploy
-after_deploy: ./acceptance_test.sh https://$HEROKU_APP_NAME
 # here is some Heroku configuration
 deploy:
   provider: heroku
@@ -17,6 +15,8 @@ deploy:
   # never use local variables for the secure keys
     secure: $HEROKU_KEY # Heroku env variable
   app: $HEROKU_APP_NAME
+  # run acceptance tests after deploy
+  run: ./acceptance_test.sh https://$HEROKU_APP_NAME.herokuapp.com
   on:
     branch: production
     condition: $TRAVIS_PYTHON_VERSION = 2.7
